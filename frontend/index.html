@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthLink - Patient Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="patient-portal">
+
+    <div class="container">
+        <header>
+            <h1>🏥 HealthLink</h1>
+            <nav>
+                <a href="index.html" class="active">Patient Portal</a>
+                <a href="admin-login.html">Admin Dashboard</a>
+            </nav>
+        </header>
+
+        <section>
+            <h2>New Patient Registration</h2>
+            <form id="register-form">
+                <div class="form-group">
+                    <label for="reg-name">Full Name</label>
+                    <input type="text" id="reg-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-dob">Date of Birth</label>
+                    <input type="date" id="reg-dob" required>
+                </div>
+                <button type="submit">Register</button>
+            </form>
+        </section>
+
+        <hr style="margin: 30px 0; border: 1px solid #eee;">
+
+        <section>
+            <h2>Book an Appointment</h2>
+            <form id="booking-form">
+                <div class="form-group">
+                    <label for="patient-select">Select Your Patient Record</label>
+                    <select id="patient-select" required>
+                        <option value="">Loading...</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="appt-date">Requested Date</label>
+                    <input type="date" id="appt-date" required>
+                </div>
+                <div class="form-group">
+                    <label>Select Symptoms</label>
+                    <div id="symptom-checkboxes" class="symptom-group">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="appt-notes">Additional Notes (optional)</label>
+                    <textarea id="appt-notes" rows="4" placeholder="e.g., 'This has been happening for 3 days...', 'My pain is sharp, not dull...'"></textarea>
+                </div>
+
+                <button type="submit">Request Appointment</button>
+            </form>
+        </section>
+
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

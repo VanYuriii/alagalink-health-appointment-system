@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthLink - Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="admin-dashboard">
+
+    <div class="container">
+        <header>
+            <h1>🏥 HealthLink Admin</h1>
+            <nav>
+                <a href="index.html">Patient Portal</a>
+                <a href="admin-login.html" class="active">Admin Dashboard</a>
+            </nav>
+        </header>
+
+        <button id="logout-button" class="button" style="background-color: var(--danger); width: 120px; float: right; margin-bottom: 20px;">
+            Logout
+        </button>
+        <div style="clear: both;"></div>
+
+        <section>
+            <h2>Dashboard Metrics</h2>
+            <div class="metrics-grid">
+                <div class="metric-card total">
+                    <h3>Total Appointments</h3>
+                    <p id="metric-total">0</p>
+                </div>
+                <div class="metric-card pending">
+                    <h3>Pending</h3>
+                    <p id="metric-pending">0</p>
+                </div>
+                <div class="metric-card high-urgency">
+                    <h3>High Urgency</h3>
+                    <p id="metric-high-urgency">0</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Manage Active Appointments</h2>
+            <form id="manage-form" class="manage-form-grid">
+                <div class="form-group" style="margin: 0;">
+                    <label for="manage-select">Select Active Appointment</label>
+                    <select id="manage-select" required>
+                        <option value="">Loading...</option>
+                    </select>
+                </div>
+                <div class="form-group" style="margin: 0;">
+                    <label for="manage-new-status">Set New Status</label>
+                    <select id="manage-new-status" required>
+                        <option value="approved">Approved</option>
+                        <option value="rescheduled">Rescheduled</option>
+                        <option value="done">Done</option>
+                    </select>
+                </div>
+                <button type="submit">Update</button>
+            </form>
+        </section>
+
+        <hr style="margin: 30px 0; border: 1px solid #eee;">
+
+        <section>
+            <h2>Active Appointments (Pending, Approved, Rescheduled)</h2>
+            <div class="search-bar">
+                <input type="text" id="search-active" placeholder="Search by patient name...">
+            </div>
+            <div class="table-wrapper">
+                <table id="active-appointments-table">
+                    <thead>
+                        <tr>
+                            <th>Patient</th>
+                            <th>Requested Date</th>
+                            <th>Status</th>
+                            <th>Urgency</th>
+                            <th>Suggested Checkup</th>
+                            <th>Symptoms</th>
+                        </tr>
+                    </thead>
+                    <tbody id="active-appointments-table-body">
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <hr style="margin: 30px 0; border: 1px solid #eee;">
+
+        <section>
+            <h2>Completed Appointments</h2>
+            <div class="search-bar">
+                <input type="text" id="search-completed" placeholder="Search by patient name...">
+            </div>
+            <div class="table-wrapper">
+                <table id="completed-appointments-table">
+                    <thead>
+                        <tr>
+                            <th>Patient</th>
+                            <th>Requested Date</th>
+                            <th>Status</th>
+                            <th>Urgency</th>
+                            <th>Suggested Checkup</th>
+                            <th>Symptoms</th>
+                        </tr>
+                    </thead>
+                    <tbody id="completed-appointments-table-body">
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
