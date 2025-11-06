@@ -4,10 +4,212 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HealthLink - Patient Portal</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #d9cbb1;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #2e7d32 0%, #388e3c 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            background: rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover, nav a.active {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        section {
+            padding: 30px;
+        }
+
+        h2 {
+            color: #2e7d32;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+            border-bottom: 3px solid #2e7d32;
+            padding-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        label {
+            display: block;
+            color: #2e7d32;
+            font-weight: 600;
+            margin-bottom: 8px;
+            transition: color 0.3s ease;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            background-color: #f4f9f4;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #388e3c;
+            box-shadow: 0 0 0 3px rgba(56, 142, 60, 0.1);
+        }
+
+        .form-group:focus-within label {
+            color: #388e3c;
+        }
+
+        .symptom-group {
+            background-color: #f4f9f4;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            max-height: 200px;
+            overflow-y: auto;
+            transition: border-color 0.3s ease;
+        }
+
+        .symptom-group:hover {
+            border-color: #388e3c;
+        }
+
+        .symptom-group::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .symptom-group::-webkit-scrollbar-track {
+            background: #f4f9f4;
+            border-radius: 4px;
+        }
+
+        .symptom-group::-webkit-scrollbar-thumb {
+            background: #2e7d32;
+            border-radius: 4px;
+        }
+
+        .symptom-group::-webkit-scrollbar-thumb:hover {
+            background: #388e3c;
+        }
+
+        .symptom-item {
+            display: flex;
+            align-items: center;
+            padding: 8px;
+            margin: 5px 0;
+            border-radius: 5px;
+            transition: background-color 0.2s ease;
+        }
+
+        .symptom-item:hover {
+            background-color: rgba(46, 125, 50, 0.1);
+        }
+
+        .symptom-item input[type="checkbox"] {
+            width: auto;
+            margin-right: 10px;
+            cursor: pointer;
+            accent-color: #2e7d32;
+        }
+
+        .symptom-item label {
+            margin: 0;
+            cursor: pointer;
+            font-weight: 400;
+            flex: 1;
+        }
+
+        button[type="submit"] {
+            background: linear-gradient(135deg, #2e7d32 0%, #388e3c 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            box-shadow: 0 4px 10px rgba(46, 125, 50, 0.3);
+        }
+
+        button[type="submit"]:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(46, 125, 50, 0.4);
+        }
+
+        button[type="submit"]:active {
+            transform: translateY(0);
+        }
+
+        hr {
+            margin: 30px 0;
+            border: none;
+            border-top: 1px solid #eee;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        select {
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body id="patient-portal">
-
     <div class="container">
         <header>
             <h1>🏥 HealthLink</h1>
@@ -16,7 +218,6 @@
                 <a href="admin-login.html">Admin Dashboard</a>
             </nav>
         </header>
-
         <section>
             <h2>New Patient Registration</h2>
             <form id="register-form">
@@ -31,9 +232,7 @@
                 <button type="submit">Register</button>
             </form>
         </section>
-
         <hr style="margin: 30px 0; border: 1px solid #eee;">
-
         <section>
             <h2>Book an Appointment</h2>
             <form id="booking-form">
@@ -52,18 +251,14 @@
                     <div id="symptom-checkboxes" class="symptom-group">
                     </div>
                 </div>
-
                 <div class="form-group">
                     <label for="appt-notes">Additional Notes (optional)</label>
                     <textarea id="appt-notes" rows="4" placeholder="e.g., 'This has been happening for 3 days...', 'My pain is sharp, not dull...'"></textarea>
                 </div>
-
                 <button type="submit">Request Appointment</button>
             </form>
         </section>
-
     </div>
-
     <script src="app.js"></script>
 </body>
 </html>
