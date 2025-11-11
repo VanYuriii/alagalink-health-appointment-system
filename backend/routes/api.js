@@ -9,6 +9,19 @@ const Appointment = require('../models/appointment');
 
 const { runTriage } = require('../logic/triage');
 
+/**
+ * @fileoverview API routes for patient management and appointment scheduling system.
+ * Handles patient registration, appointment creation, admin authentication, and
+ * appointment management.
+ * 
+ * @module routes/api
+ * @requires express
+ * @requires jsonwebtoken
+ * @requires ../middleware/auth
+ * @requires ../models/patient
+ * @requires ../models/appointment
+ * @requires ../logic/triage
+ */
 
 /**
  * @route   POST /api/admin/login

@@ -1,4 +1,20 @@
-﻿require('dotenv').config();
+﻿/**
+ * @fileoverview Main application entry point for HealthLink API.
+ * Configures Express server, establishes database connection, sets up middleware,
+ * and initializes API routes for the patient appointment management system.
+ * 
+ * @module server
+ * @requires dotenv - Environment variable configuration
+ * @requires express - Web application framework
+ * @requires cors - Cross-Origin Resource Sharing middleware
+ * @requires ./config/database - MongoDB connection handler
+ * @requires ./routes/api - API route handlers
+ * 
+ * @author Ivan Yuri Pana, Jojit Sitoy, and Vin Belandres
+ * @version 1.0.0
+ */
+
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const connectDB = require('./config/database');

@@ -1,3 +1,11 @@
+/**
+ * Knowledge base containing symptom rules and combinations for medical triage.
+ * 
+ * @constant {Object} knowledgeBase
+ * @property {Object} symptoms - Individual symptom definitions with urgency levels
+ * @property {Array<Object>} combos - Symptom combinations that suggest specific checkups
+ */
+
 const knowledgeBase = {
     symptoms: {
         fever: { urgency: "Medium" },
@@ -29,6 +37,36 @@ const knowledgeBase = {
         },
     ],
 };
+
+/**
+ * Analyzes a list of symptoms and determines the urgency level and recommended checkup type.
+ * 
+ * The function evaluates symptoms based on a rule-based system:
+ * 1. Determines the highest urgency level from all symptoms (High > Medium > Low)
+ * 2. Checks for high-urgency symptoms with specific checkup recommendations
+ * 3. Matches symptom combinations to suggest specialized checkups
+ * 
+ * @function runTriage
+ * @param {string[]} symptoms - Array of symptom identifiers (e.g., ["fever", "cough"])
+ * @returns {Object} Triage results
+ * @returns {string} returns.urgency - Urgency level: "High", "Medium", or "Low"
+ * @returns {string} returns.suggestedCheckup - Recommended type of medical checkup
+ * 
+ * @example
+ * // High urgency case
+ * runTriage(["chest_pain", "fever"]);
+ * // Returns: { urgency: "High", suggestedCheckup: "URGENT Cardiac" }
+ * 
+ * @example
+ * // Symptom combination match
+ * runTriage(["fever", "cough"]);
+ * // Returns: { urgency: "Medium", suggestedCheckup: "Respiratory Checkup" }
+ * 
+ * @example
+ * // Low urgency case
+ * runTriage(["headache"]);
+ * // Returns: { urgency: "Low", suggestedCheckup: "General Checkup" }
+ */
 
 const runTriage = (symptoms) => {
     let finalUrgency = "Low";
